@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="relative z-10 container mx-auto px-5 md:px-8 pt-32">
       <div className="container min-h-[calc(100vh-120px)] flex flex-col">
         
-        {/* MIDDLE CONTENT */}
+        {/* MIDDLE   CONTENT */}
         <div className="mt-12 md:mt-20 text-left md:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-8xl font-serif leading-tight text-[#67AC79] mb-8">
             Live Better.<br />
