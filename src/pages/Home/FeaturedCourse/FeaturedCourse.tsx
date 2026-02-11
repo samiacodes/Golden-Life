@@ -55,7 +55,7 @@ export default function FeaturedCourse() {
         },
     ]
 
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay() as any])
 
     const scrollPrev = React.useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev()

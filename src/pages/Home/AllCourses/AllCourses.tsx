@@ -4,26 +4,17 @@ import * as React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Star, Clock, Users, X, Play, ShoppingCart } from 'lucide-react'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Star, Clock, Users } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog"
 import Coursecatagory2 from "../Coursecatagory2/Coursecatagory2"
 import CourseInstructor from "../Courseinstructor/CourseInstructor"
 import CoursePlan from "../CoursePlan/CoursePlan"
 import CourseDetails from "../CourseDetails/CourseDetails"
 import CourseFeatures from "../CourseFeature/CourseFeature"
-import useModalStore from "@/store/Store"
 import { useTranslation } from "react-i18next"
 import CourseCarousel from "@/pages/Home/AllCourses/CourseCaroudel"
 

@@ -10,7 +10,7 @@ import CourseFeature from "../CourseFeature/CourseFeature";
 const CourseOutline = () => {
     const [showCourseFeatures, setShowCourseFeatures] = useState(false); // State to toggle CourseFeature visibility
     const sliderRef = React.useRef<HTMLDivElement>(null);
-    const [currentSlide, setCurrentSlide] = React.useState(0);
+// const [currentSlide, setCurrentSlide] = React.useState(0);
 
     // Static course data
     const courses = [
@@ -52,7 +52,6 @@ const CourseOutline = () => {
         if (sliderRef.current) {
             const scrollAmount = sliderRef.current.offsetWidth;
             sliderRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-            setCurrentSlide((prev) => Math.max(prev - 1, 0));
         }
     };
 
@@ -60,7 +59,6 @@ const CourseOutline = () => {
         if (sliderRef.current) {
             const scrollAmount = sliderRef.current.offsetWidth;
             sliderRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-            setCurrentSlide((prev) => Math.min(prev + 1, courses.length - 1));
         }
     };
 
@@ -88,10 +86,10 @@ const CourseOutline = () => {
                         </p>
                     </div>
                     <div className="flex gap-2">
-                        <button variant="outline" size="icon" onClick={slideLeft} aria-label="Previous slide">
+                        <button className="border border-gray-300 rounded p-2 hover:bg-gray-100" onClick={slideLeft} aria-label="Previous slide">
                             <ChevronLeft className="h-4 w-4" />
                         </button>
-                        <button variant="outline" size="icon" onClick={slideRight} aria-label="Next slide">
+                        <button className="border border-gray-300 rounded p-2 hover:bg-gray-100" onClick={slideRight} aria-label="Next slide">
                             <ChevronRight className="h-4 w-4" />
                         </button>
                     </div>
@@ -110,11 +108,11 @@ const CourseOutline = () => {
                                     className="object-cover w-full h-48 rounded-md"
                                 />
                                 <div className="absolute top-2 right-2 flex gap-2">
-                                    <button size="icon" variant="secondary">
+                                    <button className="bg-white rounded-full p-2 shadow hover:bg-gray-100">
                                         <ShoppingCart className="h-4 w-4" />
                                         <span className="sr-only">Add to cart</span>
                                     </button>
-                                    <button size="icon" variant="secondary">
+                                    <button className="bg-white rounded-full p-2 shadow hover:bg-gray-100">
                                         <Heart className="h-4 w-4" />
                                         <span className="sr-only">Add to favorites</span>
                                     </button>

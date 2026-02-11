@@ -14,6 +14,7 @@ import {
     Package,
     Truck,
 } from "lucide-react";
+import { NavData } from "@/types/navigation";
 import {
     Collapsible,
     CollapsibleContent,
@@ -53,7 +54,7 @@ export default function TopupLayout() {
     const [t] = useTranslation("global");
 
 
-    const data = {
+    const data: NavData = {
         user: {
             name: "shadcn",
             email: "m@example.com",
@@ -123,7 +124,7 @@ export default function TopupLayout() {
                                     }`}
                                 aria-label={category.name}
                             >
-                                <category.icon className="h-6 w-6 mb-1" />
+{React.createElement(category.icon, { className: "h-6 w-6 mb-1" })}
                                 <span className="text-xs">{category.name}</span>
                             </Link>
                         ))}
@@ -133,18 +134,18 @@ export default function TopupLayout() {
                     <SidebarGroup>
                         <SidebarMenu>
                             {data.navMain[activeCategory as keyof typeof data.navMain]?.map((item) => (
-                                <Collapsible key={item.title} asChild defaultOpen={item.isActive} className="group/collapsible">
+                                <Collapsible key={item.title} asChild defaultOpen={"isActive" in item ? item.isActive : false} className="group/collapsible">
                                     <SidebarMenuItem>
                                         <CollapsibleTrigger asChild>
                                             <SidebarMenuButton tooltip={item.title}>
-                                                {item.icon && <item.icon />}
+{'icon' in item && item.icon && React.createElement(item.icon)}
                                                 <Link to={item.url}>{item.title}</Link>
                                                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                             </SidebarMenuButton>
                                         </CollapsibleTrigger>
                                         <CollapsibleContent>
                                             <SidebarMenuSub>
-                                                {item.items?.map((subItem) => (
+{'items' in item && item.items?.map((subItem: { title: string; url: string }) => (
                                                     <SidebarMenuSubItem key={subItem.title}>
                                                         <SidebarMenuSubButton asChild>
                                                             <Link to={subItem.url}>

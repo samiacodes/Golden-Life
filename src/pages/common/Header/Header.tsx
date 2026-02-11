@@ -30,7 +30,7 @@ const Header: React.FC = () => {
     const cancelButtonRef = useRef(null);
     const [value] = useState<string | undefined>();
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestions, setSuggestions] = useState<{ id: number; name: string; image: string }[]>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [t, i18n] = useTranslation('global')
     const [isLoginOptionsModalOpen, setIsLoginOptionsModalOpen] = useState(false);

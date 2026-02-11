@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const Footer = () => {
     const { t, i18n } = useTranslation("global"); // Initialize translation hook
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<string | undefined>(undefined);
     const currentYear = new Date().getFullYear();
 
     return (

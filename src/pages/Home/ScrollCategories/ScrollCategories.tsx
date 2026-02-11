@@ -105,7 +105,8 @@ const [t] = useTranslation("global");
                     ))}
                 </div>
             </div>
-            <style jsx>{`
+            <style>
+                {`
                 .right-to-left-scroll {
                     --total-width: 0px;
                     --item-width: 0px;
@@ -121,7 +122,8 @@ const [t] = useTranslation("global");
                         transform: translateX(0);
                     }
                 }
-            `}</style>
+                `}
+            </style>
         </div>
     )
 }

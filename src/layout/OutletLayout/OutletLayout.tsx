@@ -4,6 +4,7 @@ import * as React from "react"
 import { Link, Outlet } from "react-router-dom"
 import logo from '../../../public/image/logo/logo.jpg'
 import { ChevronRight, SquareTerminal, ChefHat, HelpCircleIcon, LogInIcon, ShoppingBag, ShoppingCart, GraduationCap, Package, Truck } from 'lucide-react'
+import { NavData } from '@/types/navigation'
 import {
     Collapsible,
     CollapsibleContent,
@@ -44,7 +45,7 @@ export default function OutletLayout() {
     const [t] = useTranslation("global");
 
 
-    const data = {
+    const data: NavData = {
         user: {
             name: "shadcn",
             email: "m@example.com",
@@ -114,7 +115,10 @@ export default function OutletLayout() {
                                     }`}
                                 aria-label={category.name}
                             >
-                                <category.icon className="h-6 w-6 mb-1" />
+{(() => {
+    const Icon = category.icon;
+    return <Icon className="h-6 w-6 mb-1" />;
+})()}
                                 <span className="text-xs">{category.name}</span>
                             </Link>
                         ))}
@@ -128,20 +132,23 @@ export default function OutletLayout() {
                                 <Collapsible
                                     key={item.title}
                                     asChild
-                                    defaultOpen={item.isActive}
+                                    defaultOpen={'isActive' in item ? item.isActive : false}
                                     className="group/collapsible "
                                 >
                                     <SidebarMenuItem>
                                         <CollapsibleTrigger asChild>
                                             <SidebarMenuButton tooltip={item.title}>
-                                                {item.icon && <item.icon />}
+{'icon' in item && item.icon && (() => {
+    const Icon = item.icon;
+    return <Icon />;
+})()}
                                                 <Link to={item.url}>{item.title}</Link>
                                                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                             </SidebarMenuButton>
                                         </CollapsibleTrigger>
                                         <CollapsibleContent>
                                             <SidebarMenuSub>
-                                                {item.items?.map((subItem) => (
+                                                {'items' in item && item.items?.map((subItem: { title: string; url: string }) => (
                                                     <SidebarMenuSubItem key={subItem.title}>
                                                         <SidebarMenuSubButton asChild>
                                                             <Link to={subItem.url}>
